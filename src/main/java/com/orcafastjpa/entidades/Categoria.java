@@ -17,14 +17,14 @@ public class Categoria {
 	private Long id;
 	
 	@Column(length = 100, nullable = false)
-	private String descricao;
+	private String descricaoc;
 
 	public Categoria() {
 		
 	}
 
 	public Categoria(String descricao) {
-		this.descricao = descricao;
+		this.descricaoc = descricao;
 	}
 
 	public Long getId() {
@@ -36,11 +36,11 @@ public class Categoria {
 	}
 
 	public String getDescricao() {
-		return descricao;
+		return descricaoc;
 	}
 
 	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+		this.descricaoc = descricao;
 	}
 	
 	

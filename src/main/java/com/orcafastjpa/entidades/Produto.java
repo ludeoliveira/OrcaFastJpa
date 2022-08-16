@@ -32,7 +32,7 @@ public class Produto {
 	@Column(nullable = false)
 	private double estoque;
 	
-	@Column(length = 300, nullable = false)
+	@Column(length = 300)
 	private String imagem;
 
 	public Produto(Categoria categoria, String descricaop, String marca, double estoque, String imagem) {

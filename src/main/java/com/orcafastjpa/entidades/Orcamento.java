@@ -17,59 +17,46 @@ import javax.persistence.Table;
 public class Orcamento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
+	private Long id;	
 
 	@ManyToOne
 	@JoinColumn(name = "idusuario")
 	private Usuario usuario;
 	
-
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant createdAt;
-
+	private Instant datacriacao;
 
 	public Orcamento() {
 		
 	}
 
-
-	public Orcamento(Usuario usuario, Instant createdAt) {
+	public Orcamento(Usuario usuario, Instant datacriacao) {
 		this.usuario = usuario;
-		this.createdAt = createdAt;
+		this.datacriacao = datacriacao;
 	}
-
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
-
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
-
-	public Instant getCreatedAt() {
-		return createdAt;
+	public Instant getdatacriacao() {
+		return datacriacao;
 	}
 
-
-	public void setCreatedAt(Instant createdAt) {
-		this.createdAt = createdAt;
+	public void setCreatedAt(Instant datacriacao) {
+		this.datacriacao = datacriacao;
 	}
-
-
-	
 
 }
