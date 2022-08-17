@@ -19,13 +19,14 @@ public class Categoria {
 	@Column(length = 100, nullable = false)
 	private String descricaoc;
 
+	
 	public Categoria() {
-		
-	}
 
-	public Categoria(String descricao) {
-		this.descricaoc = descricao;
 	}
+	public Categoria(String descricaoc) {
+		this.descricaoc = descricaoc;
+	}
+	
 
 	public Long getId() {
 		return id;
@@ -35,15 +36,12 @@ public class Categoria {
 		this.id = id;
 	}
 
-	public String getDescricao() {
+	public String getDescricaoc() {
 		return descricaoc;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricaoc = descricao;
+	public void setDescricaoc(String descricaoc) {
+		this.descricaoc = descricaoc;
 	}
-	
-	
-	
 
 }
