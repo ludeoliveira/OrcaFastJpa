@@ -36,7 +36,6 @@ public class CategoriaService {
 	public Categoria editarCategoria(Long idcategoria, Categoria categoria) {
 		Categoria cat = consultarCategoriaId(idcategoria);
 		cat.setDescricaoc(categoria.getDescricaoc());
-		
 		return repo.save(cat);
 	}
 	
