@@ -42,7 +42,7 @@ public class CategoriaController {
 	public ResponseEntity<Categoria> consultaCategoriaId(@PathVariable("idcategoria")Long idcategoria){
 		return ResponseEntity.ok(service.consultarCategoriaId(idcategoria));
 	}
-	
+	//VOLTAR PARA COLOCAR A REF. DOS PRODUTOS PARA APAGAR JUNTO COM A CATEGORIA
 	@DeleteMapping("/categoria/{idcategoria}")
 	public ResponseEntity<Void> excluirCategoria(@PathVariable("idcategoria") Long idcategoria) {
 		service.excluirCategoria(idcategoria);
