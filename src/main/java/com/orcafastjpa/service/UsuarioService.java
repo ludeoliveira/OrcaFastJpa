@@ -37,7 +37,6 @@ public class UsuarioService {
 		user.setCnpj(usuario.getCnpj());
 		user.setRazaosocial(usuario.getRazaosocial());
 		return repo.save(user);
-	
 	}
 	
 	

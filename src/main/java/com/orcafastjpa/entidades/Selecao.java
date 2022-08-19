@@ -28,6 +28,10 @@ public class Selecao {
 	@JoinColumn(name="idproduto")
 	private Produto produto;
 
+	@ManyToOne
+	@JoinColumn(name="idorcamento")
+	private Orcamento orcamento;
+	
 	public Selecao() {}
 
 	public Selecao(double quantidade, double preco, Produto produto, Orcamento orcamento) {
@@ -77,12 +81,5 @@ public class Selecao {
 	public void setOrcamento(Orcamento orcamento) {
 		this.orcamento = orcamento;
 	}
-
-	@ManyToOne
-	@JoinColumn(name="idorcamento")
-	private Orcamento orcamento;
-	
-	
-	
 	
 }
