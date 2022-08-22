@@ -1,5 +1,7 @@
 package com.orcafastjpa.entidades;
 
+import java.time.Instant;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
@@ -34,6 +37,16 @@ public class Produto {
 	
 	@Column(length = 300)
 	private String imagem;
+	
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	private Instant dataCriacao;
+	
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	private Instant dataAtualizacao;
+	
+	public Produto() {
+
+	}
 
 	public Produto(Categoria categoria, String descricaop, String marca, double estoque, String imagem) {
 		this.categoria = categoria;
@@ -43,9 +56,6 @@ public class Produto {
 		this.imagem = imagem;
 	}
 
-	public Produto() {
-
-	}
 
 	public Long getId() {
 		return id;
@@ -93,6 +103,24 @@ public class Produto {
 
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
-	}	
+	}
+
+	public Instant getDataCriacao() {
+		return dataCriacao;
+	}
+
+	@PrePersist
+	public void setDataCriacao() {
+		this.dataCriacao = Instant.now();
+	}
+
+	public Instant getDataAtualizacao() {
+		return dataAtualizacao;
+	}
+
+	@PreUpdate
+	public void setDataAtualizacao() {
+		this.dataAtualizacao = Instant.now();
+	}
 
 }

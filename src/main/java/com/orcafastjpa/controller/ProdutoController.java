@@ -3,6 +3,7 @@ package com.orcafastjpa.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.orcafastjpa.entidades.Produto;
 import com.orcafastjpa.service.ProdutoService;
+import com.orcafastjpa.service.dto.ProdutoDTO;
 
 @RestController
 @RequestMapping("/")
@@ -24,17 +26,19 @@ public class ProdutoController {
 	ProdutoService service;
 
 	@PostMapping("/produtos")
-	public ResponseEntity<Produto> salvarProduto(@RequestBody Produto produto){
-		return ResponseEntity.ok(service.salvarProduto(produto));
+	public ResponseEntity<ProdutoDTO> salvarProduto(@RequestBody Produto produto){
+		ProdutoDTO prod = service.salvarProduto(produto);
+		return ResponseEntity.status(HttpStatus.CREATED).body(prod);
 	}
 
 	@GetMapping("/produtos")
-	public ResponseEntity<List<Produto>> consultarProduto() {
-		return ResponseEntity.ok(service.consultarProdutos());
+	public ResponseEntity<List<ProdutoDTO>> consultarProduto() {
+		List<ProdutoDTO> produtos = service.consultarProdutos();
+		return ResponseEntity.status(HttpStatus.OK).body(produtos);
 	}
 
 	@GetMapping("/produtos/{idproduto}")
-	public ResponseEntity<Produto> consultarProdutoId(@PathVariable("idproduto") Long idproduto) {
+	public ResponseEntity<ProdutoDTO> consultarProdutoId(@PathVariable("idproduto") Long idproduto) {
 		return ResponseEntity.ok(service.consultarProdutoId(idproduto));
 	}
 
@@ -45,7 +49,7 @@ public class ProdutoController {
 	}
 
 	@PutMapping("/produtos/{idproduto}")
-	public ResponseEntity<Produto> editarProduto(@PathVariable("idproduto") Long idproduto,
+	public ResponseEntity<ProdutoDTO> editarProduto(@PathVariable("idproduto") Long idproduto,
 			@RequestBody Produto produto) {
 		return ResponseEntity.ok(service.editarProduto(idproduto, produto));
 	}
