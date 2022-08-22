@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 
@@ -16,6 +17,7 @@ import javax.persistence.Table;
 @Table(name = "orcamento")
 public class Orcamento {
 	@Id
+	@Column(name="idorcamento")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;	
 
@@ -55,8 +57,9 @@ public class Orcamento {
 		return datacriacao;
 	}
 
-	public void setCreatedAt(Instant datacriacao) {
-		this.datacriacao = datacriacao;
+	@PrePersist
+	public void setdatacriacao() {
+		this.datacriacao = Instant.now();
 	}
 
 }
