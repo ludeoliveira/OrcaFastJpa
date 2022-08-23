@@ -52,8 +52,9 @@ public class ProdutoService {
 	}
 
 	public void excluirProduto(Long idproduto) {
-		Produto produto = consultarProdutoIdprivate(idproduto);
-		repo.delete(produto);
+		//Produto produto = consultarProdutoIdprivate(idproduto);
+		//repo.delete(produto);
+		repo.deleteById(idproduto);
 	}
 
 	public ProdutoDTO editarProduto(Long idproduto, Produto produto) {
