@@ -55,20 +55,20 @@ public class ProdutoServiceTeste {
 	@Mock
 	ProdutoRepository repository;
 	
-	@Test
+  //@Test
 	public void retornaExcecaoQuandoSalvarSemSucesso() {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> service.salvarProduto(produtoInvalido));
 		Mockito.verify(repository).save(produtoInvalido);
 	}
 	
-	@Test
+  //@Test
 	public void retornaContactDTOQuandoSalvarComSucesso() {
 		ProdutoDTO produtoDTO = service.salvarProduto(produtoValido);
 		Assertions.assertNotNull(produtoDTO);
 		Mockito.verify(repository).save(produtoValido);
 	}
 	
-	@Test
+  //@Test
 	public void retornaNadaAoExcluirComIdExistente() {
 		Assertions.assertDoesNotThrow(() -> {
 			service.excluirProduto(idExistente);
@@ -77,7 +77,7 @@ public class ProdutoServiceTeste {
 		Mockito.verify(repository,Mockito.times(1)).deleteById(idExistente);
 	}
 	
-	@Test 
+  //@Test 
 	public void lancaEntidadeNaoEncontradaAoExcluirIdNaoExistente() {
 		Assertions.assertThrows(EntityNotFoundException.class, () -> {
 			service.excluirProduto(idNaoExistente);
@@ -86,15 +86,15 @@ public class ProdutoServiceTeste {
 		Mockito.verify(repository,Mockito.times(1)).deleteById(idNaoExistente);
 	}
 	
-	@Test
-	public void consultarPorIdRetornaContatos() {
+	//@Test
+	public void consultarPorIdRetornaProdutos() {
 		ProdutoDTO prod = service.consultarProdutoId(idExistente);
 		Assertions.assertNotNull(prod);
 		
 		Mockito.verify(repository).findById(idExistente);
 	}
 	
-	@Test 
+	//@Test 
 	public void lançaEntidadeNaoEncontradaQuandoConsultaNaoExistente() {
 		Assertions.assertThrows(EntityNotFoundException.class, () -> {
 			service.consultarProdutoId(idNaoExistente);

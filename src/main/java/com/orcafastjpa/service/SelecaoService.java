@@ -28,8 +28,8 @@ public class SelecaoService {
 	}
 	
 	public void excluirSelecao(Long idselecao) {
-		Selecao selecao = consultarSelecaoPorId(idselecao);
-		repo.delete(selecao);
+		//Selecao selecao = consultarSelecaoPorId(idselecao);
+		repo.deleteById(idselecao);
 	}
 	
 	public Selecao editarSelecao(Long idselecao, Selecao selecao) {
