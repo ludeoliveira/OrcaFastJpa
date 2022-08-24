@@ -28,8 +28,7 @@ public class UsuarioService {
 	}
 	//VOLTAR PARA COLOCAR A REF. DOS ORÇAMENTOS PARA APAGAR JUNTO COM O USUÁRIO
 	public void excluirUsuario(Long idusuario) {
-		Usuario usuario = consultarUsuarioById(idusuario);
-		repo.delete(usuario);
+		repo.deleteById(idusuario);
 	}
 	
 	public Usuario editarUsuario(Long idusuario, Usuario usuario) {
