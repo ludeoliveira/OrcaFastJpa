@@ -29,8 +29,9 @@ public class FornecedorService {
 	}
 
 	public void excluirFornecedor(Long idfornecedor) {
-		Fornecedor fornecedor = consultarFornecedorId(idfornecedor);
-		repo.delete(fornecedor);
+		
+		//Fornecedor fornecedor = consultarFornecedorId(idfornecedor);
+		repo.deleteById(idfornecedor);
 	}
 
 	public Fornecedor editarFornecedor(Long idfornecedor, Fornecedor fornecedor) {

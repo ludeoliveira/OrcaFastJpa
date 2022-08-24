@@ -35,7 +35,6 @@ public class Selecao {
 	public Selecao() {}
 
 	public Selecao(double quantidade, double preco, Produto produto, Orcamento orcamento) {
-		super();
 		this.quantidade = quantidade;
 		this.preco = preco;
 		this.produto = produto;
