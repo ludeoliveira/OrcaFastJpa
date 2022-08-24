@@ -2,6 +2,8 @@ package com.orcafastjpa.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,7 +25,7 @@ public class SelecaoController {
 	SelecaoService service;
 	
 	@PostMapping("/selecao")
-	public ResponseEntity<Selecao> salvarSelecao(@RequestBody Selecao selecao){
+	public ResponseEntity<Selecao> salvarSelecao(@Valid @RequestBody Selecao selecao){
 		return ResponseEntity.ok(service.salvar(selecao));
 	}
 	

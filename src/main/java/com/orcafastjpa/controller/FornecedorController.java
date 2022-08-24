@@ -2,6 +2,8 @@ package com.orcafastjpa.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +26,7 @@ public class FornecedorController {
 	FornecedorService service;
 
 	@PostMapping("/fornecedor")
-	public ResponseEntity<Fornecedor> salvarFornecedor(@RequestBody Fornecedor fornecedor) {
+	public ResponseEntity<Fornecedor> salvarFornecedor(@Valid @RequestBody Fornecedor fornecedor) {
 		return ResponseEntity.ok(service.salvar(fornecedor));
 	}
 

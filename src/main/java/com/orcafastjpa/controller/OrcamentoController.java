@@ -2,6 +2,8 @@ package com.orcafastjpa.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +26,7 @@ public class OrcamentoController {
 	OrcamentoService service;
 	
 	@PostMapping("/orcamento")
-	ResponseEntity<Orcamento> salvarOrcamento(@RequestBody Orcamento orcamento){
+	ResponseEntity<Orcamento> salvarOrcamento(@Valid @RequestBody Orcamento orcamento){
 		return ResponseEntity.ok(service.salvar(orcamento));
 	}
 	

@@ -2,6 +2,8 @@ package com.orcafastjpa.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +28,7 @@ public class ProdutoController {
 	ProdutoService service;
 
 	@PostMapping("/produtos")
-	public ResponseEntity<ProdutoDTO> salvarProduto(@RequestBody Produto produto){
+	public ResponseEntity<ProdutoDTO> salvarProduto(@Valid @RequestBody Produto produto){
 		ProdutoDTO prod = service.salvarProduto(produto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(prod);
 	}

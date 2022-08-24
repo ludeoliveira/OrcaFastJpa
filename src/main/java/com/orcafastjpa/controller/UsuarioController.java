@@ -2,6 +2,8 @@ package com.orcafastjpa.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.orcafastjpa.entidades.Usuario;
@@ -25,7 +26,7 @@ public class UsuarioController {
 	UsuarioService service;
 	
 	@PostMapping("/usuario")
-	public ResponseEntity<Usuario> salvarUsuario(@RequestBody Usuario usuario){
+	public ResponseEntity<Usuario> salvarUsuario(@Valid @RequestBody Usuario usuario){
 		return ResponseEntity.ok(service.salvar(usuario));
 	}
 	

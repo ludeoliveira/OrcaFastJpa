@@ -2,6 +2,8 @@ package com.orcafastjpa.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,7 +31,7 @@ public class CategoriaController {
 	}
 	
 	@PostMapping("/categoria")
-	public ResponseEntity<Categoria> salvaCategoria(@RequestBody Categoria categoria){
+	public ResponseEntity<Categoria> salvaCategoria(@Valid @RequestBody Categoria categoria){
 		return ResponseEntity.ok(service.salvar(categoria));
 	}
 	

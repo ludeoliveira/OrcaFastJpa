@@ -29,8 +29,7 @@ public class CategoriaService {
 	}
 	//VOLTAR PARA COLOCAR A REF. DOS PRODUTOS PARA APAGAR JUNTO COM A CATEGORIA
 	public void excluirCategoria(Long idcategoria) {
-		Categoria categoria = consultarCategoriaId(idcategoria);
-		repo.delete(categoria);
+		repo.deleteById(idcategoria);
 	}
 	
 	public Categoria editarCategoria(Long idcategoria, Categoria categoria) {
