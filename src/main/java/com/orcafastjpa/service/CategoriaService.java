@@ -27,7 +27,7 @@ public class CategoriaService {
 		Categoria categoria = repo.findById(idcategoria).get();
 		return categoria;
 	}
-	
+	//VOLTAR PARA COLOCAR A REF. DOS PRODUTOS PARA APAGAR JUNTO COM A CATEGORIA
 	public void excluirCategoria(Long idcategoria) {
 		Categoria categoria = consultarCategoriaId(idcategoria);
 		repo.delete(categoria);

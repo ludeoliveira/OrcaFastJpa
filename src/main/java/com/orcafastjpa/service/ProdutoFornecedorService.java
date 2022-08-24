@@ -29,8 +29,8 @@ public class ProdutoFornecedorService {
 	}
 	
 	public void excluirProdutoFornecedor(Long idprodutofornecedor) {
-		ProdutoFornecedor produtofornecedor = consultarProdutoFornecedorId(idprodutofornecedor);
-		repo.delete(produtofornecedor);
+		//ProdutoFornecedor produtofornecedor = consultarProdutoFornecedorId(idprodutofornecedor);
+		repo.deleteById(idprodutofornecedor);
 	}
 	
 	public ProdutoFornecedor editarProdutoFornecedor(Long idprodutofornecedor, ProdutoFornecedor produtofornecedor) {
@@ -40,12 +40,5 @@ public class ProdutoFornecedorService {
 		prodforn.setPreco(produtofornecedor.getPreco());
 		return repo.save(prodforn);
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 }
