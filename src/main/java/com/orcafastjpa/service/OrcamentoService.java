@@ -30,8 +30,8 @@ public class OrcamentoService {
 	}
 	
 	public void excluirOrcamento(Long idorcamento) {
-		Orcamento orcamento = consultarOrcamentoById(idorcamento);
-		repo.delete(orcamento);
+		//Orcamento orcamento = consultarOrcamentoById(idorcamento);
+		repo.deleteById(idorcamento);
 	}
 	
 	public Orcamento editarOrcamento(Long idorcamento, Orcamento orcamento) {
