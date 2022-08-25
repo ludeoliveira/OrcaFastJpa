@@ -1,6 +1,9 @@
 package com.orcafastjpa.service;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +28,8 @@ public class OrcamentoService {
 	}
 	
 	public Orcamento consultarOrcamentoById(Long idorcamento) {
-		Orcamento orcamento = repo.findById(idorcamento).get();
+		Optional<Orcamento> opOrcamento = repo.findById(idorcamento);
+		Orcamento orcamento = opOrcamento.orElseThrow(() -> new EntityNotFoundException("Orcamento não encontrado"));
 		return orcamento;
 	}
 	

@@ -1,6 +1,9 @@
 package com.orcafastjpa.service;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +26,8 @@ public class SelecaoService {
 	}
 	
 	public Selecao consultarSelecaoPorId(Long idselecao) {
-		Selecao selecao = repo.findById(idselecao).get();
+		Optional<Selecao> opSel = repo.findById(idselecao);
+		Selecao selecao = opSel.orElseThrow(() -> new EntityNotFoundException("Seleção não encontrada"));
 		return selecao;	
 	}
 	

@@ -1,6 +1,9 @@
 package com.orcafastjpa.service;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +27,8 @@ public class CategoriaService {
 	}
 	
 	public Categoria consultarCategoriaId(Long idcategoria) {
-		Categoria categoria = repo.findById(idcategoria).get();
+		Optional<Categoria> opCategoria = repo.findById(idcategoria);
+		Categoria categoria = opCategoria.orElseThrow(() -> new EntityNotFoundException("Categoria não encontrada"));
 		return categoria;
 	}
 	//VOLTAR PARA COLOCAR A REF. DOS PRODUTOS PARA APAGAR JUNTO COM A CATEGORIA

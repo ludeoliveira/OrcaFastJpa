@@ -1,6 +1,9 @@
 package com.orcafastjpa.service;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +26,8 @@ public class UsuarioService {
 	}
 	
 	public Usuario consultarUsuarioById(Long idusuario) {
-		Usuario usuario = repo.findById(idusuario).get();
+		Optional<Usuario> opUsuario = repo.findById(idusuario);
+		Usuario usuario = opUsuario.orElseThrow(() -> new EntityNotFoundException("Usuario não encontrado"));
 		return usuario;
 	}
 	//VOLTAR PARA COLOCAR A REF. DOS ORÇAMENTOS PARA APAGAR JUNTO COM O USUÁRIO

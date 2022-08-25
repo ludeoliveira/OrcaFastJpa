@@ -39,7 +39,8 @@ public class ProdutoService {
 	}
 
 	private Produto consultarProdutoIdprivate(Long idproduto) {
-		Produto produto = repo.findById(idproduto).get();
+		Optional<Produto> opProd = repo.findById(idproduto);
+		Produto produto = opProd.orElseThrow(() -> new EntityNotFoundException("Produto não encontrad"));
 		return produto;
 	}
 	

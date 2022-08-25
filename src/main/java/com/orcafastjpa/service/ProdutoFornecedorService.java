@@ -1,6 +1,9 @@
 package com.orcafastjpa.service;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +27,8 @@ public class ProdutoFornecedorService {
 	}
 	
 	public ProdutoFornecedor consultarProdutoFornecedorId(Long idprodutofornecedor) { 
-		ProdutoFornecedor produtofornecedor = repo.findById(idprodutofornecedor).get();
+		Optional<ProdutoFornecedor> opProdForn = repo.findById(idprodutofornecedor);
+		ProdutoFornecedor produtofornecedor = opProdForn.orElseThrow(() -> new EntityNotFoundException("Entidade ProdutoFornecedor não encontrada"));
 		return produtofornecedor;
 	}
 	

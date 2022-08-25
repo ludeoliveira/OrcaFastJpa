@@ -47,7 +47,7 @@ public class FornecedorController {
 	}
 
 	@PutMapping("/fornecedor/{idfornecedor}")
-	public ResponseEntity<Fornecedor> editarFornecedor(@PathVariable("idfornecedor") Long idfornecedor,
+	public ResponseEntity<Fornecedor> editarFornecedor(@Valid @PathVariable("idfornecedor") Long idfornecedor,
 			@RequestBody Fornecedor fornecedor) {
 		return ResponseEntity.ok(service.editarFornecedor(idfornecedor, fornecedor));
 	}
