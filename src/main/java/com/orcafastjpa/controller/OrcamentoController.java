@@ -1,5 +1,6 @@
 package com.orcafastjpa.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -51,5 +52,12 @@ public class OrcamentoController {
 		Long idorcamento, @RequestBody Orcamento orcamento) {
 		return ResponseEntity.ok(service.editarOrcamento(idorcamento, orcamento));
 	}
+	
+//	@GetMapping("/orcamento/datacriacao/{datacriacao}")
+//	public ResponseEntity<List<Orcamento>> consultarOrcamentoPorDataDeCriacao(@PathVariable("datacriacao") String datacriacao) {
+//		Date data = Date.parse(datacriacao);
+//		return ResponseEntity.ok(service.consultarOrcamentoPorDataDeCriacao(data, data));
+//	}
+
 
 }

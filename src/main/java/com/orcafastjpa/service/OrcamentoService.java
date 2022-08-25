@@ -8,7 +8,6 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.orcafastjpa.entidades.Categoria;
 import com.orcafastjpa.entidades.Orcamento;
 import com.orcafastjpa.repository.OrcamentoRepository;
 
@@ -43,4 +42,9 @@ public class OrcamentoService {
 		orc.setUsuario(orcamento.getUsuario());
 		return repo.save(orc);
 	}
+	
+//	public List<Orcamento> consultarOrcamentoPorDataDeCriacao(Date datacriacao1, Date datacriacao2) {
+//		List<Orcamento> orcamentopordata = repo.findByDatacriacao(datacriacao1, datacriacao2);
+//		return orcamentopordata;
+//	}
 }

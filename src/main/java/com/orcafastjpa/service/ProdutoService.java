@@ -70,5 +70,14 @@ public class ProdutoService {
 		*/
 		return new ProdutoDTO (repo.save(prod));
 	}
-
+	
+	public List<Produto> consultarProdutosPorCategoria(String descricaoc) {
+		List<Produto> produtos = repo.findByCategoria(descricaoc);
+		return produtos;
+	}
+	
+	public List<Produto> consultarProdutoPorDescricao(String descricaop) {
+		List<Produto> descricaoprodutos = repo.findByDescricaop(descricaop);
+		return descricaoprodutos;
+	}
 }
