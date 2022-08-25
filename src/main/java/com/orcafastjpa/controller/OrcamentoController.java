@@ -1,6 +1,7 @@
 package com.orcafastjpa.controller;
 
-import java.util.Date;
+
+import java.time.Instant;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -53,11 +54,14 @@ public class OrcamentoController {
 		return ResponseEntity.ok(service.editarOrcamento(idorcamento, orcamento));
 	}
 	
-//	@GetMapping("/orcamento/datacriacao/{datacriacao}")
-//	public ResponseEntity<List<Orcamento>> consultarOrcamentoPorDataDeCriacao(@PathVariable("datacriacao") String datacriacao) {
+	@GetMapping("/orcamento/datacriacao/{datacriacao}")
+	public ResponseEntity<List<Orcamento>> consultarOrcamentoPorDataDeCriacao(@PathVariable("datacriacao") String datacriacao) {
 //		Date data = Date.parse(datacriacao);
-//		return ResponseEntity.ok(service.consultarOrcamentoPorDataDeCriacao(data, data));
-//	}
+		Instant instanteconvertido = Instant.parse(datacriacao);
+		return ResponseEntity.ok(service.consultarOrcamentoPorDataDeCriacao(instanteconvertido));
+	}
+	
+//	Instant instant = zdt.toInstant() ;
 
 
 }

@@ -1,5 +1,7 @@
 package com.orcafastjpa.service;
 
+
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,8 +45,8 @@ public class OrcamentoService {
 		return repo.save(orc);
 	}
 	
-//	public List<Orcamento> consultarOrcamentoPorDataDeCriacao(Date datacriacao1, Date datacriacao2) {
-//		List<Orcamento> orcamentopordata = repo.findByDatacriacao(datacriacao1, datacriacao2);
-//		return orcamentopordata;
-//	}
+	public List<Orcamento> consultarOrcamentoPorDataDeCriacao(Instant datacriacao) {
+		List<Orcamento> orcamentopordata = repo.findByDatacriacao(datacriacao);
+		return orcamentopordata;
+	}
 }
