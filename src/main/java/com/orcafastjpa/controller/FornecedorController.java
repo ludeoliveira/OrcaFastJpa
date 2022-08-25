@@ -51,4 +51,9 @@ public class FornecedorController {
 			@RequestBody Fornecedor fornecedor) {
 		return ResponseEntity.ok(service.editarFornecedor(idfornecedor, fornecedor));
 	}
+	
+	@GetMapping("/fornecedor/email/{email}")
+	public ResponseEntity<List<Fornecedor>> consultarFornecedorPorEmail(@PathVariable("email") String email) {
+		return ResponseEntity.ok(service.consultarFornecedorPorEmail(email));
+	}
 }
