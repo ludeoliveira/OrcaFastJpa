@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "produtofornecedor")
@@ -27,6 +28,7 @@ public class ProdutoFornecedor {
 	private Fornecedor fornecedor;
 	
 	@Column(nullable = false)
+	@NotBlank(message ="Preco é obrigatório")
 	private double preco;
 
 	public ProdutoFornecedor() {}
