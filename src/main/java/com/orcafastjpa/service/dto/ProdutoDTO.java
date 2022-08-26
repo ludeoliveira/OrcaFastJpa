@@ -34,8 +34,7 @@ public class ProdutoDTO {
 		this.marca = produto.getMarca();
 		this.imagem = produto.getImagem();
 	}
-	
-	
+
 	public static List<ProdutoDTO> converterParaDTO(List<Produto> produtos){
 		List<ProdutoDTO> produtosDTO = new ArrayList<>();
 		for (Produto prod : produtos) {

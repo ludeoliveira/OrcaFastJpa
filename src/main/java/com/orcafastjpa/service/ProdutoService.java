@@ -58,7 +58,7 @@ public class ProdutoService {
 		repo.deleteById(idproduto);
 	}
 
-	public ProdutoDTO editarProduto(Long idproduto, Produto produto) {
+	public ProdutoDTO editarProduto(Long idproduto, ProdutoDTO produto) {
 		Produto prod = consultarProdutoIdprivate(idproduto);
 		BeanUtils.copyProperties(produto, prod, "id");
 		/*

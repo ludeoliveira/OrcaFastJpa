@@ -59,7 +59,7 @@ public class ProdutoServiceTeste {
 	public void retornaProdutoQuandoAlterarComSucesso() {
 		produtoValido.setId(idExistente);
 		Mockito.when(repository.findById(idExistente)).thenReturn(Optional.of(produtoValido));
-		ProdutoDTO produto = service.editarProduto(idExistente, produtoValido);
+		ProdutoDTO produto = service.editarProduto(idExistente, new ProdutoDTO(produtoValido));
 		Assertions.assertNotNull(produto);
 		Assertions.assertEquals(idExistente, produto.getId());
 		Assertions.assertEquals(produtoValido.getCategoria(), produto.getCategoria());

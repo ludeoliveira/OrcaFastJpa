@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "produto")
@@ -25,23 +24,23 @@ public class Produto {
 	
 	@ManyToOne
 	@JoinColumn(name="idcategoria")
-	@NotBlank(message ="Categoria é obrigatório")
+	//@NotBlank(message ="Categoria é obrigatório")
 	private Categoria categoria;
 	
 	@Column(length = 100, nullable = false)
-	@NotBlank(message ="Descrição é obrigatório")
+	//@NotBlank(message ="Descrição é obrigatório")
 	private String descricaop;
 	
 	@Column(length = 50, nullable = false)
-	@NotBlank(message ="Marca é obrigatório")
+	//@NotBlank(message ="Marca é obrigatório")
 	private String marca;
 	
 	@Column(nullable = false)
-	@NotBlank(message ="Estoque é obrigatório")
+	//@NotBlank(message ="Estoque é obrigatório")
 	private double estoque;
 	
 	@Column(length = 300)
-	@NotBlank(message ="Imagem é obrigatório")
+	//@NotBlank(message ="Imagem é obrigatório")
 	private String imagem;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")

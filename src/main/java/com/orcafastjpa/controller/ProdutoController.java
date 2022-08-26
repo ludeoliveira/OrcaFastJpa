@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.orcafastjpa.entidades.Produto;
 import com.orcafastjpa.service.ProdutoService;
 import com.orcafastjpa.service.dto.ProdutoDTO;
@@ -42,7 +41,7 @@ public class ProdutoController {
 
 	@GetMapping("/produtos/{idproduto}")
 	public ResponseEntity<ProdutoDTO> consultarProdutoId(@PathVariable("idproduto") Long idproduto) {
-		return ResponseEntity.ok(service.consultarProdutoId(idproduto));
+		return ResponseEntity.status(HttpStatus.OK).body(service.consultarProdutoId(idproduto));
 	}
 
 	@DeleteMapping("/produtos/{idproduto}")
@@ -53,8 +52,9 @@ public class ProdutoController {
 
 	@PutMapping("/produtos/{idproduto}")
 	public ResponseEntity<ProdutoDTO> editarProduto(@PathVariable("idproduto") Long idproduto,
-			@RequestBody Produto produto) {
-		return ResponseEntity.ok(service.editarProduto(idproduto, produto));
+			@RequestBody ProdutoDTO produto) {
+		return ResponseEntity.status(HttpStatus.OK).body(service.editarProduto(idproduto, produto));
+		
 	}
 	
 	@GetMapping("/produtos/categoria/{descricaoc}")
