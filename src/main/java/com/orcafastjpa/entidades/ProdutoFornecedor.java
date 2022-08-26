@@ -28,7 +28,7 @@ public class ProdutoFornecedor {
 	private Fornecedor fornecedor;
 	
 	@Column(nullable = false)
-	@NotBlank(message ="Preco é obrigatório")
+	//@NotBlank(message ="Preco é obrigatório")
 	private double preco;
 
 	public ProdutoFornecedor() {}
