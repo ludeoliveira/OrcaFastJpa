@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "selecao")
@@ -19,11 +19,13 @@ public class Selecao {
 	@Column(name="idselecao")
 	private Long id;
 	
-	@NotBlank(message ="Quantidade é obrigatório")
+	@NotNull(message ="Quantidade é obrigatório")
+	//@NotBlank(message ="Quantidade é obrigatório")
 	@Column(nullable = false)
 	private double quantidade;
 	
-	@NotBlank(message ="Preco é obrigatório")
+	@NotNull(message ="Preco é obrigatório")
+	//@NotBlank(message ="Preco é obrigatório")
 	@Column(nullable = false)
 	private double preco;
 	
