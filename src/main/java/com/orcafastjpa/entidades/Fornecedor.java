@@ -18,21 +18,22 @@ public class Fornecedor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "Razão social é obrigatório")
+//	@NotBlank(message = "Razão social é obrigatório")
 	@Column(length = 100, nullable = false, unique = true)
+	@Size(min = 1, max = 100, message = "A razão social deve ser informada")
 	private String razaosocial;
 	
-	@NotBlank(message = "CNPJ é obrigatório")
+//	@NotBlank(message = "CNPJ é obrigatório")
 	@Size(min = 18, max = 18, message = "O CNPJ deve conter 18 caracteres")
 	@Column(length = 20, nullable = false, unique = true)
 	private String cnpj;
 	
-	@NotBlank(message = "Email é obrigatório")
+//	@NotBlank(message = "Email é obrigatório")
 	@Column(length = 100, nullable = false, unique = true)
 	@Email(message = "Email invalido")
 	private String email;
 	
-	@NotBlank(message = "Telefone é obrigatório")
+//	@NotBlank(message = "Telefone é obrigatório")
 	@Column(length = 15, nullable = false)
 	@Size(min = 14, max = 14, message = "O telefone deve conter 14 caracteres")
 	private String telefone;

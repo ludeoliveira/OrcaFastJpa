@@ -49,7 +49,8 @@ public class FornecedorControllerTestes {
 		idFornExistente = 1l;
 		idFornNaoExistente = 1000l;
 		fornecedorExistente = new Fornecedor("MM Construtora", "11.345.878/0001-23", "contatomm@gmail.com", "(49)9999-99999");
-		fornecedorNovo = new Fornecedor("MM Construtora", "11.345.878/0001-23", "contatomm@gmail.com", "(49)9999-99999");
+		fornecedorNovo = new Fornecedor();
+		fornecedorExistente.setId(1l);
 	
 		Mockito.when(service.consultarFornecedorId(idFornExistente)).thenReturn(fornecedorExistente);
 		Mockito.doThrow(EntityNotFoundException.class).when(service).consultarFornecedorId(idFornNaoExistente);
