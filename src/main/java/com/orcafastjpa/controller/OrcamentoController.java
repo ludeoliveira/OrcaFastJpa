@@ -7,6 +7,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,7 @@ public class OrcamentoController {
 	
 	@PostMapping("/orcamento")
 	ResponseEntity<Orcamento> salvarOrcamento(@Valid @RequestBody Orcamento orcamento){
-		return ResponseEntity.ok(service.salvar(orcamento));
+		return ResponseEntity.status(HttpStatus.CREATED).body(service.salvar(orcamento));
 	}
 	
 	@GetMapping("/orcamento")
