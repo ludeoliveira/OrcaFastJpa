@@ -15,7 +15,6 @@ import org.mockito.Mockito;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.orcafastjpa.entidades.Orcamento;
-import com.orcafastjpa.entidades.Selecao;
 import com.orcafastjpa.entidades.Usuario;
 import com.orcafastjpa.repository.OrcamentoRepository;
 

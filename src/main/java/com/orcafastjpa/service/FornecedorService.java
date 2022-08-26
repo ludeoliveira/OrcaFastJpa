@@ -1,6 +1,5 @@
 package com.orcafastjpa.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +9,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionSystemException;
-
 
 import com.orcafastjpa.entidades.Fornecedor;
 import com.orcafastjpa.repository.FornecedorRepository;

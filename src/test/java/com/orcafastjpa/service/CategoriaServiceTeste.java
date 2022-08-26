@@ -14,7 +14,6 @@ import org.mockito.Mockito;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.orcafastjpa.entidades.Categoria;
-import com.orcafastjpa.entidades.Fornecedor;
 import com.orcafastjpa.repository.CategoriaRepository;
 
 @ExtendWith(SpringExtension.class)

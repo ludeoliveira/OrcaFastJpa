@@ -55,20 +55,42 @@ public class ProdutoServiceTeste {
 	@Mock
 	ProdutoRepository repository;
 	
-  //@Test
+	@Test
+	public void retornaProdutoQuandoAlterarComSucesso() {
+		produtoValido.setId(idExistente);
+		Mockito.when(repository.findById(idExistente)).thenReturn(Optional.of(produtoValido));
+		ProdutoDTO produto = service.editarProduto(idExistente, produtoValido);
+		Assertions.assertNotNull(produto);
+		Assertions.assertEquals(idExistente, produto.getId());
+		Assertions.assertEquals(produtoValido.getCategoria(), produto.getCategoria());
+		Assertions.assertEquals(produtoValido.getDescricaop(), produto.getDescricaop());
+		Assertions.assertEquals(produtoValido.getMarca(), produto.getMarca());
+		Assertions.assertEquals(produtoValido.getImagem(), produto.getImagem());
+		Mockito.verify(repository).save(produtoValido);
+	}
+	
+	@Test
+	public void retornaNadaAoExcluirComIdProduto() {
+		Assertions.assertDoesNotThrow(() -> {
+			service.excluirProduto(idExistente);
+		});
+		Mockito.verify(repository,Mockito.times(1)).deleteById(idExistente);
+	}
+	
+	@Test
 	public void retornaExcecaoQuandoSalvarSemSucesso() {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> service.salvarProduto(produtoInvalido));
 		Mockito.verify(repository).save(produtoInvalido);
 	}
 	
-  //@Test
+	@Test
 	public void retornaContactDTOQuandoSalvarComSucesso() {
 		ProdutoDTO produtoDTO = service.salvarProduto(produtoValido);
 		Assertions.assertNotNull(produtoDTO);
 		Mockito.verify(repository).save(produtoValido);
 	}
 	
-  //@Test
+	@Test
 	public void retornaNadaAoExcluirComIdExistente() {
 		Assertions.assertDoesNotThrow(() -> {
 			service.excluirProduto(idExistente);
@@ -77,7 +99,7 @@ public class ProdutoServiceTeste {
 		Mockito.verify(repository,Mockito.times(1)).deleteById(idExistente);
 	}
 	
-  //@Test 
+	@Test 
 	public void lancaEntidadeNaoEncontradaAoExcluirIdNaoExistente() {
 		Assertions.assertThrows(EntityNotFoundException.class, () -> {
 			service.excluirProduto(idNaoExistente);
@@ -86,7 +108,7 @@ public class ProdutoServiceTeste {
 		Mockito.verify(repository,Mockito.times(1)).deleteById(idNaoExistente);
 	}
 	
-	//@Test
+	@Test
 	public void consultarPorIdRetornaProdutos() {
 		ProdutoDTO prod = service.consultarProdutoId(idExistente);
 		Assertions.assertNotNull(prod);
@@ -94,7 +116,7 @@ public class ProdutoServiceTeste {
 		Mockito.verify(repository).findById(idExistente);
 	}
 	
-	//@Test 
+	@Test 
 	public void lançaEntidadeNaoEncontradaQuandoConsultaNaoExistente() {
 		Assertions.assertThrows(EntityNotFoundException.class, () -> {
 			service.consultarProdutoId(idNaoExistente);
