@@ -23,7 +23,7 @@ public class Selecao {
 	private double quantidade;
 	
 	//@Null(message ="Preco é obrigatório")
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	private double preco;
 	
 	@ManyToOne
