@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name = "orcamento")
@@ -25,6 +27,7 @@ public class Orcamento {
 	@JoinColumn(name = "idusuario")
 	private Usuario usuario;
 	
+	@DateTimeFormat()
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant datacriacao;
 
