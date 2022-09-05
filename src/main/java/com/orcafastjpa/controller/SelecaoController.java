@@ -42,6 +42,11 @@ public class SelecaoController {
 		return ResponseEntity.ok(service.consultarSelecaoPorId(idselecao));
 	}
 	
+	@GetMapping("/selecao/orcamento/{idorcamento}")
+	public ResponseEntity<List<Selecao>> consultarSelecaoByOrcamento(@PathVariable("idorcamento") Long idorcamento){
+		return ResponseEntity.ok(service.consultarSelecaoPorOrcamento(idorcamento));
+	}
+	
 	@DeleteMapping("/selecao/{idselecao}")
 	public ResponseEntity<Void> excluirSelecao(@PathVariable("idselecao") Long idselecao){
 		service.excluirSelecao(idselecao);

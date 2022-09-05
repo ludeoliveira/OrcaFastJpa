@@ -44,7 +44,7 @@ public class ManipuladorDeErro {
 		ErroPadrao erro = new ErroPadrao();
 		erro.setTimestamp(Instant.now());
 		erro.setStatus(HttpStatus.NOT_FOUND.value());
-		erro.setError("Recurso não encontrado");
+		erro.setError("Recursos não encontrados");
 		erro.setMessage(e.getMessage());
 		erro.setPath(req.getRequestURI());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);

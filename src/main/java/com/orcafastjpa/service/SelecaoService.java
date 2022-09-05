@@ -31,6 +31,11 @@ public class SelecaoService {
 		return selecao;	
 	}
 	
+	public List<Selecao> consultarSelecaoPorOrcamento(Long idorcamento){
+		List<Selecao> selecao = repo.findByIdorcamento(idorcamento);
+		return selecao;
+	}
+	
 	public void excluirSelecao(Long idselecao) {
 		//Selecao selecao = consultarSelecaoPorId(idselecao);
 		repo.deleteById(idselecao);
