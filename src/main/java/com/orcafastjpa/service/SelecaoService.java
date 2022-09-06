@@ -55,7 +55,7 @@ public class SelecaoService {
 	
 	public Selecao salvarSelecao (Selecao selecao) {
 		Selecao sel = repo.save(selecao);
-		SelecaoDTO selecaoDTO = this.converteDTO(sel);
+		SelecaoDTO selDTO = this.converteDTO(sel);
 		return sel;
 	}
 	
