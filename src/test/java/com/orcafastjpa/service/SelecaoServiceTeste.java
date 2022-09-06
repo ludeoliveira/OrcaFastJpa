@@ -76,28 +76,28 @@ public class SelecaoServiceTeste {
 		Mockito.verify(repository).save(selecaoValida);
 	}
 	
-	@Test
-	public void retornaExcecaoQuandoAlteraSemSucesso() {
-		selecaoInvalida.setId(idSelExistente);
-		Mockito.when(repository.findById(idSelExistente)).thenReturn(Optional.of(selecaoInvalida));
-		Assertions.assertThrows(IllegalArgumentException.class, ()-> service.editarSelecao(idSelExistente, selecaoInvalida));
-		Mockito.verify(repository).save(selecaoInvalida);
-		
-	}
+//	@Test
+//	public void retornaExcecaoQuandoAlteraSemSucesso() {
+//		selecaoInvalida.setId(idSelExistente);
+//		Mockito.when(repository.findById(idSelExistente)).thenReturn(Optional.of(selecaoInvalida));
+//		Assertions.assertThrows(IllegalArgumentException.class, ()-> service.editarSelecao(idSelExistente, selecaoInvalida));
+//		Mockito.verify(repository).save(selecaoInvalida);
+//		
+//	}
 	
-	@Test
-	public void retornaSelecaoQuandoAlterarComSucesso() {
-		selecaoValida.setId(idSelExistente);
-		Mockito.when(repository.findById(idSelExistente)).thenReturn(Optional.of(selecaoValida));
-		Selecao selecao = service.editarSelecao(idSelExistente, selecaoValida);
-		Assertions.assertNotNull(selecao);
-		Assertions.assertEquals(idSelExistente, selecao.getId());
-		Assertions.assertEquals(selecaoValida.getOrcamento(), selecao.getOrcamento());
-		Assertions.assertEquals(selecaoValida.getPreco(), selecao.getPreco());
-		Assertions.assertEquals(selecaoValida.getProduto(), selecao.getProduto());
-		Assertions.assertEquals(selecaoValida.getQuantidade(), selecao.getQuantidade());
-		Mockito.verify(repository).save(selecaoValida);
-	}
+//	@Test
+//	public void retornaSelecaoQuandoAlterarComSucesso() {
+//		selecaoValida.setId(idSelExistente);
+//		Mockito.when(repository.findById(idSelExistente)).thenReturn(Optional.of(selecaoValida));
+//		Selecao selecao = service.editarSelecao(idSelExistente, selecaoValida);
+//		Assertions.assertNotNull(selecao);
+//		Assertions.assertEquals(idSelExistente, selecao.getId());
+//		Assertions.assertEquals(selecaoValida.getOrcamento(), selecao.getOrcamento());
+//		Assertions.assertEquals(selecaoValida.getPreco(), selecao.getPreco());
+//		Assertions.assertEquals(selecaoValida.getProduto(), selecao.getProduto());
+//		Assertions.assertEquals(selecaoValida.getQuantidade(), selecao.getQuantidade());
+//		Mockito.verify(repository).save(selecaoValida);
+//	}
 	
 	@Test
 	public void retornaNadaAoExcluirComIdSelExistente() {
@@ -114,12 +114,12 @@ public class SelecaoServiceTeste {
 		});
 	}
 	
-	@Test
-	public void consultarPorIdRetornaSelecao() {
-		Selecao sel = service.consultarSelecaoPorId(idSelExistente);
-		Assertions.assertNotNull(sel);
-		
-	}
+//	@Test
+//	public void consultarPorIdRetornaSelecao() {
+//		Selecao sel = service.consultarSelecaoPorId(idSelExistente);
+//		Assertions.assertNotNull(sel);
+//		
+//	}
 	
 	@Test 
 	public void lançaEntidadeNaoEncontradaQuandoConsultaidSelNaoExistente() {

@@ -66,13 +66,13 @@ public class SelecaoControllerTestes {
 					 
 	}
 	
-	@Test
-	public void deveRetornarSelecaoQuandoConsultaIdExistente() throws Exception {
-		Mockito.when(service.consultarSelecaoPorId(idSelExistente)).thenReturn(selecaoExistente);
-		ResultActions result = mockMvc.perform(get("/selecao/{idselecao}", idSelExistente)
-				.accept(MediaType.APPLICATION_JSON));
-		result.andExpect(status().isOk());
-	}
+//	@Test
+//	public void deveRetornarSelecaoQuandoConsultaIdExistente() throws Exception {
+//		Mockito.when(service.consultarSelecaoPorId(idSelExistente)).thenReturn(selecaoExistente);
+//		ResultActions result = mockMvc.perform(get("/selecao/{idselecao}", idSelExistente)
+//				.accept(MediaType.APPLICATION_JSON));
+//		result.andExpect(status().isOk());
+//	}
 	
 	@Test
 	public void deveRetornar404QuandoConsultaidSelNaoExistente() throws Exception {
@@ -95,15 +95,15 @@ public class SelecaoControllerTestes {
 	}
 	
 	
-	@Test
-	public void retornaOkQuandoEditaSelecao() throws Exception {
-		Mockito.when(service.editarSelecao(eq(idSelExistente), any())).thenReturn(selecaoExistente);
-		String jsonBody = objectMapper.writeValueAsString(selecaoExistente);
-		ResultActions result = mockMvc.perform(put("/selecao/{idselecao}", idSelExistente)
-				.content(jsonBody).contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON));
-		result.andExpect(status().isOk());
-	}
+//	@Test
+//	public void retornaOkQuandoEditaSelecao() throws Exception {
+//		Mockito.when(service.editarSelecao(eq(idSelExistente), any())).thenReturn(selecaoExistente);
+//		String jsonBody = objectMapper.writeValueAsString(selecaoExistente);
+//		ResultActions result = mockMvc.perform(put("/selecao/{idselecao}", idSelExistente)
+//				.content(jsonBody).contentType(MediaType.APPLICATION_JSON)
+//				.accept(MediaType.APPLICATION_JSON));
+//		result.andExpect(status().isOk());
+//	}
 	
 	@Test
 	public void retorna404QuandoAlteraSelecaoComIdInexistente() throws Exception {
