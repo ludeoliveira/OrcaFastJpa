@@ -24,10 +24,6 @@ public class SelecaoService {
 	@Autowired
 	ProdutoRepository pRepo;
 	
-	public Selecao salvar (Selecao selecao) {
-		return repo.save(selecao);
-	}
-	
 	private SelecaoDTO converteDTO(Selecao sel) {
 		Long idProduto = sel.getProduto().getId();
 		Produto p = pRepo.findById(idProduto).get();
@@ -53,10 +49,10 @@ public class SelecaoService {
 		return selDTO;	
 	}
 	
-	public Selecao salvarSelecao (Selecao selecao) {
+	public SelecaoDTO salvarSelecao (Selecao selecao) {
 		Selecao sel = repo.save(selecao);
 		SelecaoDTO selecaoDTO = this.converteDTO(sel);
-		return sel;
+		return selecaoDTO;
 	}
 	
 	

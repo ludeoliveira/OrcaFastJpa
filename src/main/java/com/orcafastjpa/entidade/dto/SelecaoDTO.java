@@ -1,18 +1,8 @@
 package com.orcafastjpa.entidade.dto;
 
-import java.util.Optional;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.orcafastjpa.entidades.Orcamento;
 import com.orcafastjpa.entidades.Produto;
-import com.orcafastjpa.entidades.Selecao;
-import com.orcafastjpa.repository.ProdutoFornecedorRepository;
-import com.orcafastjpa.repository.ProdutoRepository;
 
 
 public class SelecaoDTO{

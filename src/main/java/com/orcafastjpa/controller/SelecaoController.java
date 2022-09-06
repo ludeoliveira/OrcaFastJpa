@@ -30,8 +30,8 @@ public class SelecaoController {
 	SelecaoService service;
 	
 	@PostMapping("/selecao")
-	public ResponseEntity<Selecao> salvarSelecao(@Valid @RequestBody Selecao selecao){
-		Selecao sel = service.salvarSelecao(selecao);
+	public ResponseEntity<SelecaoDTO> salvarSelecao(@Valid @RequestBody Selecao selecao){
+		SelecaoDTO sel = service.salvarSelecao(selecao);
 		return ResponseEntity.status(HttpStatus.CREATED).body(sel);
 	}
 	
