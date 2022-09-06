@@ -10,9 +10,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.orcafastjpa.entidade.dto.ProdutoDTO;
 import com.orcafastjpa.entidades.Produto;
 import com.orcafastjpa.repository.ProdutoRepository;
-import com.orcafastjpa.service.dto.ProdutoDTO;
 
 @Service
 public class ProdutoService {

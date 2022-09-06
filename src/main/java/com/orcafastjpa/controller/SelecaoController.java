@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.orcafastjpa.entidade.dto.SelecaoDTO;
 import com.orcafastjpa.entidades.Selecao;
 import com.orcafastjpa.service.SelecaoService;
 
@@ -24,27 +25,25 @@ import com.orcafastjpa.service.SelecaoService;
 @RequestMapping("/")
 @CrossOrigin(origins = "*")
 public class SelecaoController {
+	
 	@Autowired
 	SelecaoService service;
 	
 	@PostMapping("/selecao")
-	public ResponseEntity<Selecao> salvarSelecao(@Valid @RequestBody Selecao selecao){
-		return ResponseEntity.status(HttpStatus.CREATED).body(service.salvar(selecao));
+	public ResponseEntity<SelecaoDTO> salvarSelecao(@Valid @RequestBody Selecao selecao){
+		SelecaoDTO sel = service.salvarSelecao(selecao);
+		return ResponseEntity.status(HttpStatus.CREATED).body(sel);
 	}
 	
 	@GetMapping("/selecao")
-	public ResponseEntity<List<Selecao>> consultarSelecao(){
-		return ResponseEntity.ok(service.consultarSelecao());
+	public ResponseEntity<List<SelecaoDTO>> consultarSelecao(){
+		List<SelecaoDTO> selecao = service.consultarSelecao();
+		return ResponseEntity.status(HttpStatus.OK).body(selecao);
 	}
 	
 	@GetMapping("/selecao/{idselecao}")
-	public ResponseEntity<Selecao>consultarSelecaoById(@PathVariable("idselecao") Long idselecao){
-		return ResponseEntity.ok(service.consultarSelecaoPorId(idselecao));
-	}
-	
-	@GetMapping("/selecao/orcamento/{idorcamento}")
-	public ResponseEntity<List<Selecao>> consultarSelecaoByOrcamento(@PathVariable("idorcamento") Long idorcamento){
-		return ResponseEntity.ok(service.consultarSelecaoPorOrcamento(idorcamento));
+	public ResponseEntity<SelecaoDTO>consultarSelecaoId(@PathVariable("idselecao") Long idselecao){
+		return ResponseEntity.status(HttpStatus.OK).body(service.consultarSelecaoId(idselecao));
 	}
 	
 	@DeleteMapping("/selecao/{idselecao}")
@@ -54,7 +53,20 @@ public class SelecaoController {
 	}
 	
 	@PutMapping("/selecao/{idselecao}")
-	public ResponseEntity<Selecao> editarUsuario(@PathVariable("idselecao") Long idselecao, @RequestBody Selecao selecao){
-		return ResponseEntity.ok(service.editarSelecao(idselecao, selecao));
+	public ResponseEntity<SelecaoDTO> editarUsuario(@PathVariable("idselecao") Long idselecao,
+			@RequestBody SelecaoDTO selecao){
+		return ResponseEntity.status(HttpStatus.OK).body(service.editarSelecao(idselecao, selecao));
 	}
+
+	
+	
+	@GetMapping("/selecao/orcamento/{idorcamento}")
+	public ResponseEntity<List<Selecao>> consultarSelecaoByOrcamento(@PathVariable("idorcamento") Long idorcamento){
+		return ResponseEntity.ok(service.consultarSelecaoPorOrcamento(idorcamento));
+	}
+	
 }
+	
+
+	
+

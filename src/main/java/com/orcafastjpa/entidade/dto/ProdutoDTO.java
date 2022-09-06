@@ -1,4 +1,4 @@
-package com.orcafastjpa.service.dto;
+package com.orcafastjpa.entidade.dto;
 
 import java.util.ArrayList;
 import java.util.List;

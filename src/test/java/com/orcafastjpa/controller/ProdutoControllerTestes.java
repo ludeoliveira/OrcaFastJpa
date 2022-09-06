@@ -23,9 +23,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.orcafastjpa.entidade.dto.ProdutoDTO;
 import com.orcafastjpa.entidades.Categoria;
 import com.orcafastjpa.service.ProdutoService;
-import com.orcafastjpa.service.dto.ProdutoDTO;
 
 @SpringBootTest
 @AutoConfigureMockMvc
