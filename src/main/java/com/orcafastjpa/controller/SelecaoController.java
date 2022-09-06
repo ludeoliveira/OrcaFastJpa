@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.orcafastjpa.entidades.Selecao;
 import com.orcafastjpa.service.SelecaoService;
+import com.orcafastjpa.service.dto.SelecaoDTO;
 
 @RestController
 @RequestMapping("/")
@@ -33,12 +34,12 @@ public class SelecaoController {
 	}
 	
 	@GetMapping("/selecao")
-	public ResponseEntity<List<Selecao>> consultarSelecao(){
+	public ResponseEntity<List<SelecaoDTO>> consultarSelecao(){
 		return ResponseEntity.ok(service.consultarSelecao());
 	}
 	
 	@GetMapping("/selecao/{idselecao}")
-	public ResponseEntity<Selecao>consultarSelecaoById(@PathVariable("idselecao") Long idselecao){
+	public ResponseEntity<SelecaoDTO>consultarSelecaoById(@PathVariable("idselecao") Long idselecao){
 		return ResponseEntity.ok(service.consultarSelecaoPorId(idselecao));
 	}
 	

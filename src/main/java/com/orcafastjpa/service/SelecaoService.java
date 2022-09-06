@@ -1,5 +1,6 @@
 package com.orcafastjpa.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,24 +9,51 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.orcafastjpa.entidades.Produto;
 import com.orcafastjpa.entidades.Selecao;
+import com.orcafastjpa.repository.ProdutoRepository;
 import com.orcafastjpa.repository.SelecaoRepository;
+import com.orcafastjpa.service.dto.ProdutoDTO;
+import com.orcafastjpa.service.dto.SelecaoDTO;
 
 @Service
 public class SelecaoService {
 	@Autowired
 	SelecaoRepository repo;
 	
+	@Autowired
+	ProdutoRepository pRepo;
+	
 	public Selecao salvar (Selecao selecao) {
 		return repo.save(selecao);
 	}
 	
-	public List<Selecao> consultarSelecao(){
-		List<Selecao> selecao = repo.findAll();
-		return selecao;
+	private SelecaoDTO converteDTO(Selecao sel) {
+		Long idProduto = sel.getProduto().getId();
+		Produto p = pRepo.findById(idProduto).get();
+		String descricaop = p.getDescricaop();
+		SelecaoDTO sAux = new SelecaoDTO(sel.getId(), sel.getPreco(), sel.getProduto(), sel.getOrcamento(), descricaop);
+		return sAux;
 	}
 	
-	public Selecao consultarSelecaoPorId(Long idselecao) {
+	public List<SelecaoDTO> consultarSelecao(){
+		List<Selecao> selecao = repo.findAll();
+		List<SelecaoDTO> selDTO = new ArrayList<>();
+		for(Selecao sel: selecao) {
+			SelecaoDTO sAux = this.converteDTO(sel);
+			selDTO.add(sAux);
+		}
+		return selDTO;
+	}
+	
+	public SelecaoDTO consultarSelecaoPorId(Long idselecao) {
+		Optional<Selecao> opSel = repo.findById(idselecao);
+		Selecao selecao = opSel.orElseThrow(() -> new EntityNotFoundException("Seleção não encontrada"));
+		SelecaoDTO selDTO = this.converteDTO(selecao);
+		return selDTO;	
+	}
+	
+	public Selecao consultarSelecaoPorIdPrivado(Long idselecao) {
 		Optional<Selecao> opSel = repo.findById(idselecao);
 		Selecao selecao = opSel.orElseThrow(() -> new EntityNotFoundException("Seleção não encontrada"));
 		return selecao;	
@@ -42,7 +70,7 @@ public class SelecaoService {
 	}
 	
 	public Selecao editarSelecao(Long idselecao, Selecao selecao) {
-		Selecao select = consultarSelecaoPorId(idselecao);
+		Selecao select = consultarSelecaoPorIdPrivado(idselecao);
 		select.setId(selecao.getId());
 		select.setOrcamento(selecao.getOrcamento());
 		select.setPreco(selecao.getPreco());
