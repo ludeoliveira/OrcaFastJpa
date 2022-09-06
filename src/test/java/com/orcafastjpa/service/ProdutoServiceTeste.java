@@ -13,10 +13,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.orcafastjpa.entidade.dto.ProdutoDTO;
 import com.orcafastjpa.entidades.Categoria;
 import com.orcafastjpa.entidades.Produto;
 import com.orcafastjpa.repository.ProdutoRepository;
-import com.orcafastjpa.service.dto.ProdutoDTO;
 
 @ExtendWith(SpringExtension.class)
 public class ProdutoServiceTeste {

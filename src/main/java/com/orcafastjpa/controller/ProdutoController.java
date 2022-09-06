@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.orcafastjpa.entidade.dto.ProdutoDTO;
 import com.orcafastjpa.entidades.Produto;
 import com.orcafastjpa.service.ProdutoService;
-import com.orcafastjpa.service.dto.ProdutoDTO;
 
 @RestController
 @RequestMapping("/")
@@ -59,6 +59,8 @@ public class ProdutoController {
 		
 	}
 	
+	
+	
 	@GetMapping("/produtos/categoria/{descricaoc}")
 	public ResponseEntity<List<Produto>> consultarProdutosPorCategoria(@PathVariable("descricaoc") String descricaoc) {
 		return ResponseEntity.ok(service.consultarProdutosPorCategoria(descricaoc));
@@ -68,6 +70,5 @@ public class ProdutoController {
 	public ResponseEntity<List<Produto>> consultarProdutoPorDescricao(@PathVariable("descricaop") String descricaop) {
 		return ResponseEntity.ok(service.consultarProdutoPorDescricao(descricaop));
 	}
-
 
 }

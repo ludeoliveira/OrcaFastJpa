@@ -6,15 +6,15 @@ import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.orcafastjpa.entidade.dto.SelecaoDTO;
 import com.orcafastjpa.entidades.Produto;
 import com.orcafastjpa.entidades.Selecao;
 import com.orcafastjpa.repository.ProdutoRepository;
 import com.orcafastjpa.repository.SelecaoRepository;
-import com.orcafastjpa.service.dto.ProdutoDTO;
-import com.orcafastjpa.service.dto.SelecaoDTO;
 
 @Service
 public class SelecaoService {
@@ -32,7 +32,7 @@ public class SelecaoService {
 		Long idProduto = sel.getProduto().getId();
 		Produto p = pRepo.findById(idProduto).get();
 		String descricaop = p.getDescricaop();
-		SelecaoDTO sAux = new SelecaoDTO(sel.getId(), sel.getPreco(), sel.getProduto(), sel.getOrcamento(), descricaop);
+		SelecaoDTO sAux = new SelecaoDTO(sel.getId(), sel.getQuantidade(), sel.getPreco(), sel.getProduto(), sel.getOrcamento(), descricaop);
 		return sAux;
 	}
 	
@@ -53,29 +53,46 @@ public class SelecaoService {
 		return selDTO;	
 	}
 	
-	public Selecao consultarSelecaoPorIdPrivado(Long idselecao) {
+	public Selecao salvarSelecao (Selecao selecao) {
+		Selecao sel = repo.save(selecao);
+		SelecaoDTO selecaoDTO = this.converteDTO(sel);
+		return sel;
+	}
+	
+	
+	private Selecao consultarSelecaoIdprivate(Long idselecao) {
 		Optional<Selecao> opSel = repo.findById(idselecao);
 		Selecao selecao = opSel.orElseThrow(() -> new EntityNotFoundException("Seleção não encontrada"));
 		return selecao;	
 	}
 	
-	public List<Selecao> consultarSelecaoPorOrcamento(Long idorcamento){
-		List<Selecao> selecao = repo.findByIdorcamento(idorcamento);
-		return selecao;
-	}
 	
 	public void excluirSelecao(Long idselecao) {
 		//Selecao selecao = consultarSelecaoPorId(idselecao);
 		repo.deleteById(idselecao);
 	}
 	
-	public Selecao editarSelecao(Long idselecao, Selecao selecao) {
-		Selecao select = consultarSelecaoPorIdPrivado(idselecao);
+	public SelecaoDTO editarSelecao(Long idselecao, SelecaoDTO selecao) {
+		Selecao sel = consultarSelecaoIdprivate(idselecao);
+		BeanUtils.copyProperties(selecao, sel, "id");
+		/*
 		select.setId(selecao.getId());
 		select.setOrcamento(selecao.getOrcamento());
 		select.setPreco(selecao.getPreco());
 		select.setProduto(selecao.getProduto());
 		select.setQuantidade(selecao.getQuantidade());
-		return repo.save(select);
+		*/
+		SelecaoDTO sDTO = this.converteDTO(repo.save(sel));
+		return sDTO;
+	}
+	
+	public List<SelecaoDTO> consultarSelecaoPorOrcamento(Long idorcamento){
+		List<Selecao> selecao = repo.findByIdorcamento(idorcamento);
+		List<SelecaoDTO> selDTO = new ArrayList<>();
+		for(Selecao sel: selecao) {
+			SelecaoDTO sAux = this.converteDTO(sel);
+			selDTO.add(sAux);
+		}
+		return selDTO;
 	}
 }

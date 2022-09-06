@@ -1,9 +1,10 @@
-package com.orcafastjpa.service.dto;
+package com.orcafastjpa.entidade.dto;
 
 import java.util.Optional;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,40 +14,45 @@ import com.orcafastjpa.entidades.Selecao;
 import com.orcafastjpa.repository.ProdutoFornecedorRepository;
 import com.orcafastjpa.repository.ProdutoRepository;
 
-public class SelecaoDTO {
+
+public class SelecaoDTO{
+
 	private Long id;
+	private double quantidade;
 	private double preco;
 	private Produto produto;
 	private Orcamento orcamento;
 	private String descricaop;
 	
 
-	public SelecaoDTO() { }
 
-	public SelecaoDTO(Long id, double preco, Produto produto, Orcamento orcamento, String descricaop) {
+	public SelecaoDTO(Long id, double quantidade, double preco, Produto produto, Orcamento orcamento, String descricaop) {
 		this.id = id;
+		this.quantidade = quantidade;
 		this.preco = preco;
 		this.produto = produto;
 		this.orcamento = orcamento;
 		this.descricaop = descricaop;	
 	}
+	
+	public SelecaoDTO() {
 
-	
-//	public SelecaoDTO(Selecao selecao) {
-//		this.id = selecao.getId();
-//		this.preco = selecao.getPreco();
-//		this.produto = selecao.getProduto();
-//		this.orcamento = selecao.getOrcamento();
-//		Optional<Produto> obj = pRepo.findById(selecao.getProduto().getId());
-//		//this.descricaop = p.getDescricaop();
-//	}
-	
+	}
+
 	public Long getId() {
 		return id;
 	}
-
+	
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public double getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(double quantidade) {
+		this.quantidade = quantidade;
 	}
 
 	public double getPreco() {
