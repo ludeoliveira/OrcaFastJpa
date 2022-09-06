@@ -83,16 +83,16 @@ public class SelecaoControllerTestes {
 	}
 	
 	
-	@Test
-	public void deveRetornar201AoSalvarSelecaoComSucesso() throws Exception {
-	Mockito.when(service.salvar(any())).thenReturn(selecaoExistente);
-		String jsonBody = objectMapper.writeValueAsString(selecaoNova);
-		ResultActions result = mockMvc.perform(post("/selecao")
-				.content(jsonBody)
-				.contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON));
-		result.andExpect(status().isCreated());
-	}
+//	@Test
+//	public void deveRetornar201AoSalvarSelecaoComSucesso() throws Exception {
+//	Mockito.when(service.salvar(any())).thenReturn(selecaoExistente);
+//		String jsonBody = objectMapper.writeValueAsString(selecaoNova);
+//		ResultActions result = mockMvc.perform(post("/selecao")
+//				.content(jsonBody)
+//				.contentType(MediaType.APPLICATION_JSON)
+//				.accept(MediaType.APPLICATION_JSON));
+//		result.andExpect(status().isCreated());
+//	}
 	
 	
 //	@Test

@@ -49,19 +49,17 @@ public class SelecaoService {
 		return selDTO;	
 	}
 	
-	public SelecaoDTO salvarSelecao (Selecao selecao) {
-		Selecao sel = repo.save(selecao);
-		SelecaoDTO selecaoDTO = this.converteDTO(sel);
-		return selecaoDTO;
-	}
-	
-	
 	private Selecao consultarSelecaoIdprivate(Long idselecao) {
 		Optional<Selecao> opSel = repo.findById(idselecao);
 		Selecao selecao = opSel.orElseThrow(() -> new EntityNotFoundException("Seleção não encontrada"));
 		return selecao;	
 	}
 	
+	public SelecaoDTO salvarSelecao (Selecao selecao) {
+		Selecao sel = repo.save(selecao);
+		SelecaoDTO selecaoDTO = this.converteDTO(sel);
+		return selecaoDTO;
+	}
 	
 	public void excluirSelecao(Long idselecao) {
 		//Selecao selecao = consultarSelecaoPorId(idselecao);

@@ -63,18 +63,18 @@ public class SelecaoServiceTeste {
 	@Mock
 	SelecaoRepository repository;
 	
-	@Test
-	public void retornaExcecaoQuandoSalvarSemSucesso() {
-		Assertions.assertThrows(IllegalArgumentException.class, ()-> service.salvar(selecaoInvalida));
-		Mockito.verify(repository).save(selecaoInvalida);
-	}
-	
-	@Test
-	public void retornaSelecaoQuandoSalvarComSucesso() {
-		Selecao selecao = service.salvar(selecaoValida);
-		Assertions.assertNotNull(selecao);
-		Mockito.verify(repository).save(selecaoValida);
-	}
+//	@Test
+//	public void retornaExcecaoQuandoSalvarSemSucesso() {
+//		Assertions.assertThrows(IllegalArgumentException.class, ()-> service.salvar(selecaoInvalida));
+//		Mockito.verify(repository).save(selecaoInvalida);
+//	}
+//	
+//	@Test
+//	public void retornaSelecaoQuandoSalvarComSucesso() {
+//		Selecao selecao = service.salvar(selecaoValida);
+//		Assertions.assertNotNull(selecao);
+//		Mockito.verify(repository).save(selecaoValida);
+//	}
 	
 //	@Test
 //	public void retornaExcecaoQuandoAlteraSemSucesso() {

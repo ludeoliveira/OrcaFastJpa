@@ -1,6 +1,5 @@
 package com.orcafastjpa.entidade.dto;
 
-
 import com.orcafastjpa.entidades.Orcamento;
 import com.orcafastjpa.entidades.Produto;
 
