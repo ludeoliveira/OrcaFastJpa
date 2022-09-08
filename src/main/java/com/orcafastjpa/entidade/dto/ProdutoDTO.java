@@ -3,8 +3,11 @@ package com.orcafastjpa.entidade.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.servlet.mvc.condition.ProducesRequestCondition;
+
 import com.orcafastjpa.entidades.Categoria;
 import com.orcafastjpa.entidades.Produto;
+import com.orcafastjpa.entidades.ProdutoFornecedor;
 
 public class ProdutoDTO {
 	
@@ -19,7 +22,7 @@ public class ProdutoDTO {
 
 	}
 
-	public ProdutoDTO(Long id, Categoria categoria, String descricaop, String marca, String imagem) {
+	public ProdutoDTO(Long id, Categoria categoria, String descricaop, String marca, String imagem, List<ProdutoFornecedor> podutosPorFornecedor) {
 		this.id = id;
 		this.categoria = categoria;
 		this.descricaop = descricaop;

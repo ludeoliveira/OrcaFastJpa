@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.orcafastjpa.entidade.dto.SelecaoDTO;
+import com.orcafastjpa.entidades.Fornecedor;
 import com.orcafastjpa.entidades.Produto;
+import com.orcafastjpa.entidades.ProdutoFornecedor;
 import com.orcafastjpa.entidades.Selecao;
 import com.orcafastjpa.repository.ProdutoFornecedorRepository;
 import com.orcafastjpa.repository.ProdutoRepository;
@@ -33,6 +35,9 @@ public class SelecaoService {
 	private SelecaoDTO converteDTO(Selecao sel) {
 		Long idProduto = sel.getProduto().getId();
 		Produto p = pRepo.findById(idProduto).get();
+		List<ProdutoFornecedor> pfs = prodForRepo.findByProdutoFornecedor(idProduto);
+		for(ProdutoFornecedor pf: pfs) {
+		}
 		String descricaop = p.getDescricaop();
 		SelecaoDTO sAux = new SelecaoDTO(sel.getId(), sel.getQuantidade(), sel.getPreco(), sel.getProduto(), sel.getOrcamento(), descricaop);
 		return sAux;
