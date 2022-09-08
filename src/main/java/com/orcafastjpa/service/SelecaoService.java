@@ -31,7 +31,6 @@ public class SelecaoService {
 	ProdutoFornecedorRepository prodForRepo;
 	
 
-	
 	private SelecaoDTO converteDTO(Selecao sel) {
 		Long idProduto = sel.getProduto().getId();
 		Produto p = pRepo.findById(idProduto).get();
