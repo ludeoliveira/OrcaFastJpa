@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.orcafastjpa.entidade.dto.SelecaoDTO;
 import com.orcafastjpa.entidades.Produto;
 import com.orcafastjpa.entidades.Selecao;
+import com.orcafastjpa.repository.ProdutoFornecedorRepository;
 import com.orcafastjpa.repository.ProdutoRepository;
 import com.orcafastjpa.repository.SelecaoRepository;
 
@@ -23,6 +24,11 @@ public class SelecaoService {
 	
 	@Autowired
 	ProdutoRepository pRepo;
+	
+	@Autowired
+	ProdutoFornecedorRepository prodForRepo;
+	
+
 	
 	private SelecaoDTO converteDTO(Selecao sel) {
 		Long idProduto = sel.getProduto().getId();

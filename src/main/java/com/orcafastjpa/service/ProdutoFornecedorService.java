@@ -26,6 +26,11 @@ public class ProdutoFornecedorService {
 		return produtofornecedor;
 	}
 	
+	public List<ProdutoFornecedor> findByProdutoFornecedor(Long idproduto) {
+		List<ProdutoFornecedor> produtofornecedorPreco = repo.findByProdutoFornecedor(idproduto);
+		return produtofornecedorPreco;
+	}
+	
 	public ProdutoFornecedor consultarProdutoFornecedorId(Long idprodutofornecedor) { 
 		Optional<ProdutoFornecedor> opProdForn = repo.findById(idprodutofornecedor);
 		ProdutoFornecedor produtofornecedor = opProdForn.orElseThrow(() -> new EntityNotFoundException("Entidade ProdutoFornecedor não encontrada"));
