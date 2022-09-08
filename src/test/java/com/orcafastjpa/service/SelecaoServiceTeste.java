@@ -12,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
 import com.orcafastjpa.entidades.Orcamento;
 import com.orcafastjpa.entidades.Produto;
 import com.orcafastjpa.entidades.Selecao;
@@ -63,15 +62,15 @@ public class SelecaoServiceTeste {
 	@Mock
 	SelecaoRepository repository;
 	
-//	@Test
-//	public void retornaExcecaoQuandoSalvarSemSucesso() {
-//		Assertions.assertThrows(IllegalArgumentException.class, ()-> service.salvar(selecaoInvalida));
-//		Mockito.verify(repository).save(selecaoInvalida);
-//	}
-//	
+	@Test
+	public void retornaExcecaoQuandoSalvarSemSucesso() {
+		Assertions.assertThrows(IllegalArgumentException.class, ()-> service.salvarSelecao(selecaoInvalida));
+		Mockito.verify(repository).save(selecaoInvalida);
+	}
+	
 //	@Test
 //	public void retornaSelecaoQuandoSalvarComSucesso() {
-//		Selecao selecao = service.salvar(selecaoValida);
+//		SelecaoDTO selecao = service.salvarSelecao(selecaoValida);
 //		Assertions.assertNotNull(selecao);
 //		Mockito.verify(repository).save(selecaoValida);
 //	}
@@ -116,9 +115,9 @@ public class SelecaoServiceTeste {
 	
 //	@Test
 //	public void consultarPorIdRetornaSelecao() {
-//		Selecao sel = service.consultarSelecaoPorId(idSelExistente);
+//		SelecaoDTO sel = service.consultarSelecaoPorId(idSelExistente);
 //		Assertions.assertNotNull(sel);
-//		
+//		Mockito.verify(repository).findById(idSelExistente);
 //	}
 	
 	@Test 

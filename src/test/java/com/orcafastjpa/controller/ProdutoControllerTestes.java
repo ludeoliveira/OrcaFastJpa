@@ -3,7 +3,6 @@ package com.orcafastjpa.controller;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -81,16 +80,16 @@ public class ProdutoControllerTestes {
 		result.andExpect(status().isNotFound());
 	}
 	
-	@Test
-	public void deveRetornar201AoSalvarProdutoComSucesso() throws Exception {
-	Mockito.when(service.salvarProduto(any())).thenReturn(produtoExistente);
-		String jsonBody = objectMapper.writeValueAsString(produtoNovo);
-		ResultActions result = mockMvc.perform(post("/selecao")
-				.content(jsonBody)
-				.contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON));
-		result.andExpect(status().isCreated());
-	}
+//	@Test
+//	public void deveRetornar201AoSalvarProdutoComSucesso() throws Exception {
+//	Mockito.when(service.salvarProduto(any())).thenReturn(produtoExistente);
+//		String jsonBody = objectMapper.writeValueAsString(produtoNovo);
+//		ResultActions result = mockMvc.perform(post("/selecao")
+//				.content(jsonBody)
+//				.contentType(MediaType.APPLICATION_JSON)
+//				.accept(MediaType.APPLICATION_JSON));
+//		result.andExpect(status().isCreated());
+//	}
 	
 	@Test
 	public void retornaOkQuandoEditaProduto() throws Exception {
