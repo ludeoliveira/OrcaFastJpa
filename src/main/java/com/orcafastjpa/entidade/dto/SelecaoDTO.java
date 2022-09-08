@@ -2,6 +2,7 @@ package com.orcafastjpa.entidade.dto;
 
 import com.orcafastjpa.entidades.Orcamento;
 import com.orcafastjpa.entidades.Produto;
+import com.orcafastjpa.entidades.ProdutoFornecedor;
 
 
 public class SelecaoDTO{
@@ -12,18 +13,29 @@ public class SelecaoDTO{
 	private Produto produto;
 	private Orcamento orcamento;
 	private String descricaop;
+	private ProdutoFornecedor produtoFornecedor;
+
 	
-
-
-	public SelecaoDTO(Long id, double quantidade, double preco, Produto produto, Orcamento orcamento, String descricaop) {
+	public SelecaoDTO(Long id, double quantidade, double preco, Produto produto, Orcamento orcamento, String descricaop,
+			ProdutoFornecedor produtoFornecedor) {
 		this.id = id;
 		this.quantidade = quantidade;
 		this.preco = preco;
 		this.produto = produto;
 		this.orcamento = orcamento;
-		this.descricaop = descricaop;	
+		this.descricaop = descricaop;
+		this.produtoFornecedor = produtoFornecedor;
 	}
-	
+
+
+	public ProdutoFornecedor getProdutoFornecedor() {
+		return produtoFornecedor;
+	}
+
+	public void setProdutoFornecedor(ProdutoFornecedor produtoFornecedor) {
+		this.produtoFornecedor = produtoFornecedor;
+	}
+
 	public SelecaoDTO() {
 
 	}
