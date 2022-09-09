@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.orcafastjpa.entidade.dto.SelecaoDTO;
 import com.orcafastjpa.entidades.Produto;
+import com.orcafastjpa.entidades.ProdutoFornecedor;
 import com.orcafastjpa.entidades.Selecao;
 import com.orcafastjpa.repository.ProdutoFornecedorRepository;
 import com.orcafastjpa.repository.ProdutoRepository;
@@ -33,7 +34,9 @@ public class SelecaoService {
 		Long idProduto = sel.getProduto().getId();
 		Produto p = pRepo.findById(idProduto).get();
 		String descricaop = p.getDescricaop();
-		SelecaoDTO sAux = new SelecaoDTO(sel.getId(), sel.getQuantidade(), sel.getPreco(), sel.getProduto(), sel.getOrcamento(), descricaop);
+		List<ProdutoFornecedor> pf = prodForRepo.findByProdutoFornecedor(idProduto);
+		SelecaoDTO sAux = new SelecaoDTO(sel.getId(), sel.getQuantidade(), sel.getPreco(), sel.getProduto(), sel.getOrcamento(), descricaop, pf);
+		
 		return sAux;
 	}
 	
