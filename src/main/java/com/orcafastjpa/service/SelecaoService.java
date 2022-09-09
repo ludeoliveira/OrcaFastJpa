@@ -36,7 +36,9 @@ public class SelecaoService {
 		Produto p = pRepo.findById(idProduto).get();
 		List<ProdutoFornecedor> pfs = prodForRepo.findByProdutoFornecedor(idProduto);
 		String descricaop = p.getDescricaop();
-		SelecaoDTO sAux = new SelecaoDTO(sel.getId(), sel.getQuantidade(), sel.getPreco(), sel.getProduto(), sel.getOrcamento(), descricaop);
+		List<ProdutoFornecedor> pf = prodForRepo.findByProdutoFornecedor(idProduto);
+		SelecaoDTO sAux = new SelecaoDTO(sel.getId(), sel.getQuantidade(), sel.getPreco(), sel.getProduto(), sel.getOrcamento(), descricaop, pf);
+		
 		return sAux;
 	}
 	
