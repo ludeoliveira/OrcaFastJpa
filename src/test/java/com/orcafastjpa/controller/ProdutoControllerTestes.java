@@ -59,7 +59,7 @@ public class ProdutoControllerTestes {
 	
 		produtoNovo = new ProdutoDTO();
 		
-		produtoExistente = new ProdutoDTO(2l, categoria, "Painel Ripado", "Santa Luzia", "imagem");
+		//produtoExistente = new ProdutoDTO(2l, categoria, "Painel Ripado", "Santa Luzia", "imagem");
 		produtoExistente.setId(1l);	
 					 
 	}
