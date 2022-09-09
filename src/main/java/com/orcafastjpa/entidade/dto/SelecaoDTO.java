@@ -61,8 +61,11 @@ public class SelecaoDTO{
 		this.produtoFornecedor = produtoFornecedor;
 	}
 	
-	public SelecaoDTO(double quantidade, double preco, Produto produto, Orcamento orcamento, String descricaop,
+
+	
+	public SelecaoDTO(Long id, double quantidade, double preco, Produto produto, Orcamento orcamento, String descricaop,
 			List<ProdutoFornecedor> produtoFornecedor) {
+		this.id = id;
 		this.quantidade = quantidade;
 		this.preco = preco;
 		this.produto = produto;
@@ -70,7 +73,6 @@ public class SelecaoDTO{
 		this.descricaop = descricaop;
 		this.produtoFornecedor = produtoFornecedor;
 	}
-	
 	public SelecaoDTO() {
 	}
 
